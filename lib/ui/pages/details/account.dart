@@ -77,14 +77,13 @@ class AccountEditing extends HookWidget {
   }
 
   Widget constrainedBody(AccountData? data) {
-    final formKey =
-        useMemoized(() => GlobalKey<FormState>(debugLabel: 'formkey'));
+    // final formKey =
+    //     useMemoized(() => GlobalKey<FormState>(debugLabel: 'formkey'));
     final firstName = useTextEditingController(text: data?.firstName);
     final lastName = useTextEditingController(text: data?.lastName);
     return Form(
-      key: formKey,
+      // key: formKey,
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
           Text(
             'id:${data?.username}',
@@ -103,20 +102,6 @@ class AccountEditing extends HookWidget {
               border: OutlineInputBorder(),
             ),
           ),
-          // ElevatedButton(
-          //     onPressed: () {
-          //       print('pressed save - before');
-          //       if (formKey.currentState!.validate()) {
-          //         final u = User(-1, lastName.text, int.parse(firstName.text),'', []);
-          //         //TODO как сохранять данные??
-          //         // u.upload?
-          //         context.refresh(userListProvider);
-          //         context.read(userDetailsProvider).reset();
-          //
-          //       }
-          //       print('pressed save - after');
-          //     },
-          //     child: Text(data==null?'create new':'save'))
         ]
             .map((e) => Padding(
                   padding: const EdgeInsets.symmetric(vertical: 8.0),

@@ -120,6 +120,7 @@ class AppRouterDelegate extends RouterDelegate<NavigationPath>
   // Handle Navigator.pop for any routes in our stack
   bool _handleNavigatorPop(Route<dynamic> route, dynamic result) {
     l.v('._handleNavigatorPop($route,$result)');
+
     /// Ask the route if it can handle pop internally... (has own stack)
     if (route.didPop(result)) {
       /// router hasn't internal stack, so we will pop one level in our stack
@@ -133,6 +134,7 @@ class AppRouterDelegate extends RouterDelegate<NavigationPath>
       /// didPop already pop the page, so we need just actualize our stack
       final attemptHandled = tryPopAttempt(checkForUnsaved: false);
       l.v('._handleNavigatorPop() tryPopAttempt returned $attemptHandled');
+
       /// if router ask us to pop the route - we must pop the route and return true
       /// if we return false this cause next exceptions
       /// Bad state: Future already completed
@@ -140,6 +142,7 @@ class AppRouterDelegate extends RouterDelegate<NavigationPath>
       return true;
     } else {
       l.v('route.didPop() returned false. It means that it has internal stack');
+
       /// I don't understand when it can happen and what true / false here means
       return false;
     }
@@ -188,28 +191,7 @@ class AppRouterDelegate extends RouterDelegate<NavigationPath>
   /// delegate page creation to ModelHolder object
   List<Widget> getPages(BuildContext context) {
     l.v('.getPages(_)');
-    final details = context.read(detailsModeProvider);
-    final layoutMode = app.layoutMode;
-    final showDetails =
-        details.maybeWhen(nothing: () => false, orElse: () => true);
-    final pages = <Widget>[
-      AccountsPage(),
-      if (showDetails)
-        ...details.when(
-          nothing: () => [const NoSelectionPage()],
-          unparsable: () => [const NotFoundPage()],
-          item: (int? id, bool editing) => [
-            if (id != null)
-              ProviderScope(
-                  overrides: [idScopedProvider.overrideWithValue(id)],
-                  child: AccountBrowsing()),
-            if (editing)
-              ProviderScope(
-                  overrides: [idScopedProvider.overrideWithValue(id)],
-                  child: AccountEditing(key: itemPanelKey))
-          ],
-        ),
-    ];
+    final pages = <Widget>[AccountsPage(), AccountEditing(key:itemPanelKey)];
     if (app.layoutMode == LayoutMode.narrow) {
       /// use navigator pages
       return pages;
@@ -222,13 +204,10 @@ class AppRouterDelegate extends RouterDelegate<NavigationPath>
               flex: 1,
               child: pages[0],
             ),
-            if (pages.length > 1)
-              Expanded(
-                flex: 1,
-
-                /// last is browse or editing. simultaneously in multi panel mode their not shown
-                child: pages.last,
-              ),
+            Expanded(
+              flex: 1,
+              child: pages[1],
+            ),
           ],
         )
       ];
