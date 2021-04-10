@@ -30,7 +30,6 @@ const $NavigationPath = _$NavigationPathTearOff();
 /// @nodoc
 mixin _$NavigationPath {
   String get modelName => throw _privateConstructorUsedError;
-
   String? get identifier => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -43,7 +42,6 @@ abstract class $NavigationPathCopyWith<$Res> {
   factory $NavigationPathCopyWith(
           NavigationPath value, $Res Function(NavigationPath) then) =
       _$NavigationPathCopyWithImpl<$Res>;
-
   $Res call({String modelName, String? identifier});
 }
 
@@ -53,7 +51,6 @@ class _$NavigationPathCopyWithImpl<$Res>
   _$NavigationPathCopyWithImpl(this._value, this._then);
 
   final NavigationPath _value;
-
   // ignore: unused_field
   final $Res Function(NavigationPath) _then;
 
@@ -81,7 +78,6 @@ abstract class _$NavigationPathCopyWith<$Res>
   factory _$NavigationPathCopyWith(
           _NavigationPath value, $Res Function(_NavigationPath) then) =
       __$NavigationPathCopyWithImpl<$Res>;
-
   @override
   $Res call({String modelName, String? identifier});
 }
@@ -151,15 +147,12 @@ class _$_NavigationPath extends _NavigationPath {
 abstract class _NavigationPath extends NavigationPath {
   const factory _NavigationPath(String modelName, String? identifier) =
       _$_NavigationPath;
-
   const _NavigationPath._() : super._();
 
   @override
   String get modelName => throw _privateConstructorUsedError;
-
   @override
   String? get identifier => throw _privateConstructorUsedError;
-
   @override
   @JsonKey(ignore: true)
   _$NavigationPathCopyWith<_NavigationPath> get copyWith =>

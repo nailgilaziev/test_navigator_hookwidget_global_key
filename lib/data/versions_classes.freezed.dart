@@ -20,12 +20,13 @@ AccountData _$AccountDataFromJson(Map<String, dynamic> json) {
 class _$AccountDataTearOff {
   const _$AccountDataTearOff();
 
-  _AccountData call({required int id,
-    required String username,
-    required String firstName,
-    required String lastName,
-    required bool active,
-    required List<String> authorities}) {
+  _AccountData call(
+      {required int id,
+      required String username,
+      required String firstName,
+      required String lastName,
+      required bool active,
+      required List<String> authorities}) {
     return _AccountData(
       id: id,
       username: username,
@@ -47,19 +48,13 @@ const $AccountData = _$AccountDataTearOff();
 /// @nodoc
 mixin _$AccountData {
   int get id => throw _privateConstructorUsedError;
-
   String get username => throw _privateConstructorUsedError;
-
   String get firstName => throw _privateConstructorUsedError;
-
   String get lastName => throw _privateConstructorUsedError;
-
   bool get active => throw _privateConstructorUsedError;
-
   List<String> get authorities => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $AccountDataCopyWith<AccountData> get copyWith =>
       throw _privateConstructorUsedError;
@@ -67,16 +62,16 @@ mixin _$AccountData {
 
 /// @nodoc
 abstract class $AccountDataCopyWith<$Res> {
-  factory $AccountDataCopyWith(AccountData value,
-      $Res Function(AccountData) then) =
-  _$AccountDataCopyWithImpl<$Res>;
-
-  $Res call({int id,
-    String username,
-    String firstName,
-    String lastName,
-    bool active,
-    List<String> authorities});
+  factory $AccountDataCopyWith(
+          AccountData value, $Res Function(AccountData) then) =
+      _$AccountDataCopyWithImpl<$Res>;
+  $Res call(
+      {int id,
+      String username,
+      String firstName,
+      String lastName,
+      bool active,
+      List<String> authorities});
 }
 
 /// @nodoc
@@ -84,7 +79,6 @@ class _$AccountDataCopyWithImpl<$Res> implements $AccountDataCopyWith<$Res> {
   _$AccountDataCopyWithImpl(this._value, this._then);
 
   final AccountData _value;
-
   // ignore: unused_field
   final $Res Function(AccountData) _then;
 
@@ -101,27 +95,27 @@ class _$AccountDataCopyWithImpl<$Res> implements $AccountDataCopyWith<$Res> {
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-      as int,
+              as int,
       username: username == freezed
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
-      as String,
+              as String,
       firstName: firstName == freezed
           ? _value.firstName
           : firstName // ignore: cast_nullable_to_non_nullable
-      as String,
+              as String,
       lastName: lastName == freezed
           ? _value.lastName
           : lastName // ignore: cast_nullable_to_non_nullable
-      as String,
+              as String,
       active: active == freezed
           ? _value.active
           : active // ignore: cast_nullable_to_non_nullable
-      as bool,
+              as bool,
       authorities: authorities == freezed
           ? _value.authorities
           : authorities // ignore: cast_nullable_to_non_nullable
-      as List<String>,
+              as List<String>,
     ));
   }
 }
@@ -129,24 +123,24 @@ class _$AccountDataCopyWithImpl<$Res> implements $AccountDataCopyWith<$Res> {
 /// @nodoc
 abstract class _$AccountDataCopyWith<$Res>
     implements $AccountDataCopyWith<$Res> {
-  factory _$AccountDataCopyWith(_AccountData value,
-      $Res Function(_AccountData) then) =
-  __$AccountDataCopyWithImpl<$Res>;
-
+  factory _$AccountDataCopyWith(
+          _AccountData value, $Res Function(_AccountData) then) =
+      __$AccountDataCopyWithImpl<$Res>;
   @override
-  $Res call({int id,
-    String username,
-    String firstName,
-    String lastName,
-    bool active,
-    List<String> authorities});
+  $Res call(
+      {int id,
+      String username,
+      String firstName,
+      String lastName,
+      bool active,
+      List<String> authorities});
 }
 
 /// @nodoc
 class __$AccountDataCopyWithImpl<$Res> extends _$AccountDataCopyWithImpl<$Res>
     implements _$AccountDataCopyWith<$Res> {
-  __$AccountDataCopyWithImpl(_AccountData _value,
-      $Res Function(_AccountData) _then)
+  __$AccountDataCopyWithImpl(
+      _AccountData _value, $Res Function(_AccountData) _then)
       : super(_value, (v) => _then(v as _AccountData));
 
   @override
@@ -165,42 +159,42 @@ class __$AccountDataCopyWithImpl<$Res> extends _$AccountDataCopyWithImpl<$Res>
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-      as int,
+              as int,
       username: username == freezed
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
-      as String,
+              as String,
       firstName: firstName == freezed
           ? _value.firstName
           : firstName // ignore: cast_nullable_to_non_nullable
-      as String,
+              as String,
       lastName: lastName == freezed
           ? _value.lastName
           : lastName // ignore: cast_nullable_to_non_nullable
-      as String,
+              as String,
       active: active == freezed
           ? _value.active
           : active // ignore: cast_nullable_to_non_nullable
-      as bool,
+              as bool,
       authorities: authorities == freezed
           ? _value.authorities
           : authorities // ignore: cast_nullable_to_non_nullable
-      as List<String>,
+              as List<String>,
     ));
   }
 }
 
 @JsonSerializable()
 
-/// @nodoc class _$_AccountData
-    with DiagnosticableTreeMixin
-    implements _AccountData {
-  _$_AccountData({required this.id,
-    required this.username,
-    required this.firstName,
-    required this.lastName,
-    required this.active,
-    required this.authorities});
+/// @nodoc
+class _$_AccountData with DiagnosticableTreeMixin implements _AccountData {
+  _$_AccountData(
+      {required this.id,
+      required this.username,
+      required this.firstName,
+      required this.lastName,
+      required this.active,
+      required this.authorities});
 
   factory _$_AccountData.fromJson(Map<String, dynamic> json) =>
       _$_$_AccountDataFromJson(json);
@@ -226,13 +220,14 @@ class __$AccountDataCopyWithImpl<$Res> extends _$AccountDataCopyWithImpl<$Res>
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties..add(DiagnosticsProperty('type', 'AccountData'))..add(
-        DiagnosticsProperty('id', id))..add(
-        DiagnosticsProperty('username', username))..add(
-        DiagnosticsProperty('firstName', firstName))..add(
-        DiagnosticsProperty('lastName', lastName))..add(
-        DiagnosticsProperty('active', active))..add(
-        DiagnosticsProperty('authorities', authorities));
+    properties
+      ..add(DiagnosticsProperty('type', 'AccountData'))
+      ..add(DiagnosticsProperty('id', id))
+      ..add(DiagnosticsProperty('username', username))
+      ..add(DiagnosticsProperty('firstName', firstName))
+      ..add(DiagnosticsProperty('lastName', lastName))
+      ..add(DiagnosticsProperty('active', active))
+      ..add(DiagnosticsProperty('authorities', authorities));
   }
 
   @override
@@ -279,34 +274,29 @@ class __$AccountDataCopyWithImpl<$Res> extends _$AccountDataCopyWithImpl<$Res>
 }
 
 abstract class _AccountData implements AccountData {
-  factory _AccountData({required int id,
-    required String username,
-    required String firstName,
-    required String lastName,
-    required bool active,
-    required List<String> authorities}) = _$_AccountData;
+  factory _AccountData(
+      {required int id,
+      required String username,
+      required String firstName,
+      required String lastName,
+      required bool active,
+      required List<String> authorities}) = _$_AccountData;
 
   factory _AccountData.fromJson(Map<String, dynamic> json) =
-  _$_AccountData.fromJson;
+      _$_AccountData.fromJson;
 
   @override
   int get id => throw _privateConstructorUsedError;
-
   @override
   String get username => throw _privateConstructorUsedError;
-
   @override
   String get firstName => throw _privateConstructorUsedError;
-
   @override
   String get lastName => throw _privateConstructorUsedError;
-
   @override
   bool get active => throw _privateConstructorUsedError;
-
   @override
   List<String> get authorities => throw _privateConstructorUsedError;
-
   @override
   @JsonKey(ignore: true)
   _$AccountDataCopyWith<_AccountData> get copyWith =>

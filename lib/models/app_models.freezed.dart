@@ -34,9 +34,7 @@ const $AppCondition = _$AppConditionTearOff();
 /// @nodoc
 mixin _$AppCondition {
   bool get bootstrapped => throw _privateConstructorUsedError;
-
   bool get authorized => throw _privateConstructorUsedError;
-
   LayoutMode get layoutMode => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -49,7 +47,6 @@ abstract class $AppConditionCopyWith<$Res> {
   factory $AppConditionCopyWith(
           AppCondition value, $Res Function(AppCondition) then) =
       _$AppConditionCopyWithImpl<$Res>;
-
   $Res call({bool bootstrapped, bool authorized, LayoutMode layoutMode});
 }
 
@@ -58,7 +55,6 @@ class _$AppConditionCopyWithImpl<$Res> implements $AppConditionCopyWith<$Res> {
   _$AppConditionCopyWithImpl(this._value, this._then);
 
   final AppCondition _value;
-
   // ignore: unused_field
   final $Res Function(AppCondition) _then;
 
@@ -91,7 +87,6 @@ abstract class _$AppConditionCopyWith<$Res>
   factory _$AppConditionCopyWith(
           _AppCondition value, $Res Function(_AppCondition) then) =
       __$AppConditionCopyWithImpl<$Res>;
-
   @override
   $Res call({bool bootstrapped, bool authorized, LayoutMode layoutMode});
 }
@@ -184,13 +179,10 @@ abstract class _AppCondition implements AppCondition {
 
   @override
   bool get bootstrapped => throw _privateConstructorUsedError;
-
   @override
   bool get authorized => throw _privateConstructorUsedError;
-
   @override
   LayoutMode get layoutMode => throw _privateConstructorUsedError;
-
   @override
   @JsonKey(ignore: true)
   _$AppConditionCopyWith<_AppCondition> get copyWith =>
@@ -229,7 +221,6 @@ mixin _$DetailsMode {
     required TResult Function(int? id, bool editing) item,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? nothing,
@@ -238,7 +229,6 @@ mixin _$DetailsMode {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_NothingMode value) nothing,
@@ -246,7 +236,6 @@ mixin _$DetailsMode {
     required TResult Function(_ItemMode value) item,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_NothingMode value)? nothing,
@@ -269,7 +258,6 @@ class _$DetailsModeCopyWithImpl<$Res> implements $DetailsModeCopyWith<$Res> {
   _$DetailsModeCopyWithImpl(this._value, this._then);
 
   final DetailsMode _value;
-
   // ignore: unused_field
   final $Res Function(DetailsMode) _then;
 }
@@ -455,7 +443,6 @@ abstract class _UnparsableMode implements DetailsMode {
 abstract class _$ItemModeCopyWith<$Res> {
   factory _$ItemModeCopyWith(_ItemMode value, $Res Function(_ItemMode) then) =
       __$ItemModeCopyWithImpl<$Res>;
-
   $Res call({int? id, bool editing});
 }
 
@@ -575,9 +562,7 @@ abstract class _ItemMode implements DetailsMode {
   factory _ItemMode({int? id, bool editing}) = _$_ItemMode;
 
   int? get id => throw _privateConstructorUsedError;
-
   bool get editing => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   _$ItemModeCopyWith<_ItemMode> get copyWith =>
       throw _privateConstructorUsedError;
