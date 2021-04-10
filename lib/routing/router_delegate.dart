@@ -120,10 +120,10 @@ class AppRouterDelegate extends RouterDelegate<NavigationPath>
   // Handle Navigator.pop for any routes in our stack
   bool _handleNavigatorPop(Route<dynamic> route, dynamic result) {
     l.v('._handleNavigatorPop($route,$result)');
-    // Ask the route if it can handle pop internally... (has own stack)
+    /// Ask the route if it can handle pop internally... (has own stack)
     if (route.didPop(result)) {
-      // router hasn't internal stack, so we will pop one level in our stack
-      // but router already create the animation of popping, so we must actualize our stack
+      /// router hasn't internal stack, so we will pop one level in our stack
+      /// but router already create the animation of popping, so we must actualize our stack
       l.v('._handleNavigatorPop() ask us to pop one level');
 
       /// checkForUnsaved can be true or false. Result will be the same,
@@ -133,14 +133,14 @@ class AppRouterDelegate extends RouterDelegate<NavigationPath>
       /// didPop already pop the page, so we need just actualize our stack
       final attemptHandled = tryPopAttempt(checkForUnsaved: false);
       l.v('._handleNavigatorPop() tryPopAttempt returned $attemptHandled');
-      // if router ask us to pop the route - we must pop the route and return true
-      // if we return false this cause next exceptions
-      // Bad state: Future already completed
-      // Each child must be laid out exactly once.
+      /// if router ask us to pop the route - we must pop the route and return true
+      /// if we return false this cause next exceptions
+      /// Bad state: Future already completed
+      /// Each child must be laid out exactly once.
       return true;
     } else {
       l.v('route.didPop() returned false. It means that it has internal stack');
-      // I don't understand when it can happen and what true / false here means
+      /// I don't understand when it can happen and what true / false here means
       return false;
     }
   }
@@ -163,7 +163,6 @@ class AppRouterDelegate extends RouterDelegate<NavigationPath>
 
     /// for showing snackbars messages
     return Scaffold(
-      drawer: app.layoutMode != LayoutMode.medium ? null : LeftDrawer(),
       body: Stack(
         children: [
           Navigator(
@@ -175,51 +174,24 @@ class AppRouterDelegate extends RouterDelegate<NavigationPath>
               else
                 // Model pages
                 ...getPages(context)
-            ].map(_wrapContentInPage).toList(),
+            ].map((e) => MaterialPage<void>(child: e)).toList(),
           )
         ],
       ),
     );
   }
 
-//TODO: Fix NoAnimationsPage, SB: NoAnimationPage was rebuilding constantly when resizing the app window, not sure why.
-  Page _wrapContentInPage(Widget e) {
-    //On mobile, use the Material/Cupertino transitions
-    // if (DeviceInfo.isMobile) {
-    return MaterialPage<void>(child: e);
-    // }
-    // // On desktop, use no-transition as is typical
-    // else {
-    //   return NoAnimationPage(child: e, key: ValueKey(e.runtimeType));
-    // }
-  }
-
   // preserve state when window shrinked to a minimum and item details page moved
   // in widget tree hierarchy (two panels mode changes to navigation page)
-  late GlobalKey itemPanelKey = GlobalKey();
+  GlobalKey itemPanelKey = GlobalKey();
 
   /// delegate page creation to ModelHolder object
   List<Widget> getPages(BuildContext context) {
-    // TODO если мы авторизованы, а NavigationPath == null - значит надо показать page not found
-    // TODO в этот момент получается currentMasterDetail тоже null - какая-то избыточность
     l.v('.getPages(_)');
     final details = context.read(detailsModeProvider);
     final layoutMode = app.layoutMode;
-    final masterDetailPanelsTogether = app.layoutMode != LayoutMode.narrow;
-    final showDetails = details.maybeWhen(
-        nothing: () {
-          if (masterDetailPanelsTogether) {
-            return true;
-          } else {
-            return false;
-          }
-        },
-        orElse: () => true);
-    l.v('.getPages(_) show details = $showDetails');
-    // if (np == null) {
-    //   l.v('.getPages(_) np [$np] modelHolder [${app}]');
-    //   return [const NotFoundPage()];
-    // }
+    final showDetails =
+        details.maybeWhen(nothing: () => false, orElse: () => true);
     final pages = <Widget>[
       AccountsPage(),
       if (showDetails)
@@ -238,24 +210,24 @@ class AppRouterDelegate extends RouterDelegate<NavigationPath>
           ],
         ),
     ];
-    if (!masterDetailPanelsTogether) {
+    if (app.layoutMode == LayoutMode.narrow) {
+      /// use navigator pages
       return pages;
     } else {
+      /// use master detail panels
       return [
         Row(
           children: [
-            if (layoutMode.index >= LayoutMode.wide.index)
-              LeftDrawer(popOnSelect: false),
             Expanded(
               flex: 1,
-              child: Material(elevation: 16, child: pages[0]),
+              child: pages[0],
             ),
             if (pages.length > 1)
               Expanded(
                 flex: 1,
 
                 /// last is browse or editing. simultaneously in multi panel mode their not shown
-                child: Material(elevation: 16, child: pages.last),
+                child: pages.last,
               ),
           ],
         )
